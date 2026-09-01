@@ -29,6 +29,18 @@ app.get('/api/status', (req, res) => {
     });
 });
 
+app.get('/api/biodata', (req, res) => {
+    res.status(200).json({
+        "success": true,
+        "data": {
+            "nama": "jostein masarrang",
+            "kelas": "XI RPL 1",
+            "cita_cita": "programer",
+            "hobi": "Coding & Gaming"
+        }
+    });
+});
+
 app.use((req, res) => {
     res.status(404).json({
         success: false,
