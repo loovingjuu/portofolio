@@ -44,6 +44,9 @@ app.get('/api/biodata', (req, res) => {
 });
 
 const profileRoutes = require('./routers/profileRoutes');
+const projectRoutes = require('./routers/projectroutes');
+
+app.use('/api/projects', projectRoutes);
 app.use('/api/profile', profileRoutes);
 
 app.use((req, res) => {
