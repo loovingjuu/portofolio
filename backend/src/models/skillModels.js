@@ -11,16 +11,21 @@ const getSkillById = async (id) => {
 }
 
 const createSkill = async (data) => {
-    const { name, category, precentage, icon_url } = data;
-    const [result] = await db.query('INSERT INTO skills (name, category, precentage, icon_url) VALUES (?, ?, ?, ?)',
-    [name, category || 'Other', precentage || 0, icon_url]);
+    const { name, category, level, icon } = data;
+    const [result] = await db.query('INSERT INTO skills (name, category, level, icon) VALUES (?, ?, ?, ?)',
+    [name, category || 'Other', level || 0, icon]);
     return result;
 }
 
 const updateSkill = async (id, data) => {
-    const { name, category, precentage, icon_url } = data;
-    const [result] = await db.query('UPDATE skills SET name = ?, category = ?, precentage = ?, icon_url = ? WHERE id = ?',
-    [name, category || 'Other', precentage || 0, icon_url, id]);
+    const { name, category, level, icon } = data;
+    const [result] = await db.query('UPDATE skills SET name = ?, category = ?, level = ?, icon = ? WHERE id = ?',
+    [name, category || 'Other', level || 0, icon, id]);
+    return result;
+}
+
+const deleteSkill = async (id) => {
+    const [result] = await db.query('DELETE FROM skills WHERE id = ?', [id]);
     return result;
 }
 
@@ -34,5 +39,6 @@ module.exports = {
     getSkillById,
     createSkill,
     updateSkill,
+    deleteSkill,
     getSkillsById
 };

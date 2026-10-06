@@ -54,7 +54,7 @@ const createProject = async (req, res) => {
     try {
         const data = req.body;
 
-        if (!data.title) {
+        if (!data.tittle) {
             return res.status(400).json({
                 success: false,
                 message: 'Judul proyek tidak boleh kosong.'

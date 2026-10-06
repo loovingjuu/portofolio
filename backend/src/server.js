@@ -44,13 +44,15 @@ app.get('/api/biodata', (req, res) => {
 });
 
 const profileRoutes = require('./routers/profileRoutes');
-const projectRoutes = require('./routers/projectroutes');
+const projectRoutes = require('./routers/projectRoutes');
 const skillRoutes = require('./routers/skillroutes');
+const experienceRoutes = require('./routers/experienceroutes');
 
 
-app.use('/api/projects', projectRoutes);
 app.use('/api/profile', profileRoutes);
+app.use('/api/projects', projectRoutes);
 app.use('/api/skills', skillRoutes);
+app.use('/api/experiences', experienceRoutes);
 
 app.use((req, res) => {
     res.status(404).json({
