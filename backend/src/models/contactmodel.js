@@ -1,0 +1,34 @@
+const db = require('../config/db');
+
+const getAllContacts = async () => {
+    const [rows] = await db.query('SELECT * FROM messages ORDER BY created_at DESC');
+    return rows;
+}
+
+const getContactById = async (id) => {
+    const [rows] = await db.query( 'select * from messages where id = ?', [id]);
+    return rows[0];
+}
+
+const createContact = async (id) => {
+    const { sender_name, sender_email, subject, message } = id;
+    const result = await db.query(
+        'INSERT INTO messages (sender_name, sender_email, subject, message) VALUES (?, ?, ?, ?)',
+        [sender_name, sender_email, subject, message]
+    );
+    return result;
+}
+
+const deleteContact = async (id) => {
+    const result = await db.query(
+        'DELETE FROM messages WHERE id = ?', [id]
+    );
+    return result;
+}
+
+module.exports = {
+    getAllContacts,
+    getContactById,
+    createContact,
+    deleteContact
+}
