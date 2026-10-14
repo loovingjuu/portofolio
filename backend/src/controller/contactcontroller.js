@@ -12,8 +12,8 @@ const getAllContacts = async (req, res) => {
 const getContactById = async (req, res) => {
     try {
         const data = await contact.getContactById(req.params.id);
-        if (!contact) return res.status(404).json({ success: false, message: 'not found' });
-        res.status(200).json({ success: true, data: contact });
+        if (!data) return res.status(404).json({ success: false, message: 'not found' });
+        res.status(200).json({ success: true, data: data });
     } catch (error) {
         res.status(500).json({ success: false, message: 'server error', error: error.message });
     }
