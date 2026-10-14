@@ -17,7 +17,7 @@ pool.getConnection((err, connection) => {
     if (err) {
         console.error('❌ Kesalahan Koneksi Database:', err.message);
     } else {
-        console.log('✔ Berhasil terhubung ke Database MySQL (db_portofolio)');
+        console.log('✅ Berhasil terhubung ke Database MySQL (db_portofolio)');
         connection.release(); 
     }
 });
