@@ -1,28 +1,25 @@
 const skillmodel = require("../models/skillModels");
 
 const getAllSkills = async (req, res) => {
-    try {
-    const skills = await skillmodel.getAllSkills();
-    res.status(200).json({ success: true, total: skills.length, data: skills });
-    } catch (error) {
+        try {
+        const skills = await skillmodel.getAllSkills();
+        res.status(200).json({ success: true, total: skills.length, data: skills });
+        } catch (error) {
     res
-        .status(500)
-        .json({ success: false, message: "server error", error: error.message });
+        .status(500).json({ success: false, message: "server error", error: error.message });
     }
 };
 
 const getSkillById = async (req, res) => {
-    try {
-    const { id } = req.params;
-    const skill = await skillmodel.getSkillById(id);
-    if (!skill) {
-        return res
-        .status(404)
-        .json({ success: false, message: "data tidak ditemukan" });
+    try {const { id } = req.params; 
+        const skill = await skillmodel.getSkillById(id);
+        if (!skill) {
+    return res
+        .status(404).json({ success: false, message: "data tidak ditemukan" });
     }
     res.status(200).json({ success: true, data: skill });
     } catch (error) {
-    res.status(500).json({ success: false, message: "server error", error: error.message });
+        res.status(500).json({ success: false, message: "server error", error: error.message });
     }
 };
 
