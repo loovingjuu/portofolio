@@ -49,6 +49,7 @@ const skillRoutes = require('./routers/skillroutes');
 const experienceRoutes = require('./routers/experienceroutes');
 const contactRoutes = require('./routers/contactroutes');
 const certificateRoutes = require('./routers/certificateRoutes');
+const testimoniRoutes = require('./routers/testimoniroutes');
 
 
 app.use('/api/profile', profileRoutes);
@@ -57,6 +58,7 @@ app.use('/api/skills', skillRoutes);
 app.use('/api/experiences', experienceRoutes);
 app.use('/api/contacts', contactRoutes);
 app.use('/api/certificates', certificateRoutes);
+app.use('/api/testimonis', testimoniRoutes);
 
 app.use((req, res) => {
     res.status(404).json({
